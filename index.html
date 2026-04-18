@@ -1,0 +1,110 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <!-- ===== Google SEO Core Tags ===== -->
+	    <title>Squareface Icon Generator - Online Icon Creator Game</title>
+	    <meta name="description" content="Play the Squareface Icon Generator online for free. Create custom icons instantly with full-screen support and fast loading.">
+	    <meta name="keywords" content="Squareface, Icon Generator, Online Game, Pixel Icon, Creative Tool, Icon Maker">
+	    <!-- ================================== -->
+	    <!-- Set Favicon as a Gamepad Emoji -->
+	    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+	    <style>
+	        /* ========== Global Reset ========== */
+	        * {
+	            margin: 0;
+	            padding: 0;
+	            box-sizing: border-box;
+	        }
+	        /* ========== Page Layout ========== */
+	        html, body {
+	            height: 100%;
+	            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	            background-color: #1a1a2e; /* Dark background */
+	            color: #ffffff;
+	            display: flex;
+	            flex-direction: column;
+	            overflow: hidden; /* Prevent global scrollbar */
+	        }
+	        /* ========== Top Navigation Bar ========== */
+	        header {
+	            height: 60px;
+	            background-color: #16213e; /* Dark blue nav */
+	            display: flex;
+	            justify-content: space-between; /* Space between items */
+	            align-items: center; /* Vertical center */
+	            padding: 0 20px;
+	            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Bottom shadow */
+	            z-index: 10;
+	            flex-shrink: 0; /* Prevent height compression */
+	        }
+	        .logo {
+	            font-size: 24px;
+	            font-weight: bold;
+	            color: #e94560; /* Accent color */
+	            letter-spacing: 2px;
+	        }
+	        .fullscreen-btn {
+	            padding: 10px 20px;
+	            background-color: #e94560;
+	            color: white;
+	            border: none;
+	            border-radius: 5px;
+	            font-size: 16px;
+	            font-weight: bold;
+	            cursor: pointer;
+	            transition: background-color 0.3s, transform 0.1s;
+	        }
+	        .fullscreen-btn:hover {
+	            background-color: #c81e45; /* Hover darker */
+	        }
+	        .fullscreen-btn:active {
+	            transform: scale(0.95); /* Click shrink effect */
+	        }
+	        /* ========== Main Game Area ========== */
+	        main {
+	            flex: 1; /* Take all remaining height */
+	            background-color: #0f3460; /* Game area bg */
+	            position: relative;
+	        }
+	        iframe {
+	            width: 100%;
+	            height: 100%;
+	            border: none; /* Remove default border */
+	            display: block; /* Remove bottom whitespace */
+	        }
+	    </style>
+	</head>
+	<body>
+	    <!-- Top Navigation -->
+	    <header>
+	        <div class="logo">🎮 Game Space</div>
+	        <button class="fullscreen-btn" id="fullscreenBtn">Fullscreen</button>
+	    </header>
+	    <!-- Game Embed Area -->
+	    <main id="gameContainer">
+	        <iframe 
+	            src="https://squarefaceicongenerator.co/" 
+	            allow="fullscreen"  <!-- Allow fullscreen request from iframe -->
+	            frameborder="0">
+	        </iframe>
+	    </main>
+	    <!-- JavaScript Logic -->
+	    <script>
+	        // Get button and game container elements
+	        const fullscreenBtn = document.getElementById('fullscreenBtn');
+	        const gameContainer = document.getElementById('gameContainer');
+	        // Fullscreen button click logic
+	        fullscreenBtn.addEventListener('click', () => {
+	            if (gameContainer.requestFullscreen) {
+	                gameContainer.requestFullscreen(); // Standard API
+	            } else if (gameContainer.webkitRequestFullscreen) {
+	                gameContainer.webkitRequestFullscreen(); // Safari compatibility
+	            } else if (gameContainer.msRequestFullscreen) {
+	                gameContainer.msRequestFullscreen(); // IE11 compatibility
+	            }
+	        });
+	    </script>
+	</body>
+	</html>
