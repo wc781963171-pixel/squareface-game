@@ -19,25 +19,25 @@
 	        }
 	        /* ========== Page Layout ========== */
 	        html, body {
-	            height: 100%;
+	            min-height: 100%; /* 改为 min-height 允许页面滚动 */
 	            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	            background-color: #1a1a2e; /* Dark background */
 	            color: #ffffff;
 	            display: flex;
 	            flex-direction: column;
-	            overflow: hidden; /* Prevent global scrollbar */
+	            /* overflow: hidden; 删除此行，否则下拉文字和底部会被遮挡 */
 	        }
 	        /* ========== Top Navigation Bar ========== */
 	        header {
 	            height: 60px;
 	            background-color: #16213e; /* Dark blue nav */
 	            display: flex;
-	            justify-content: space-between; /* Space between items */
-	            align-items: center; /* Vertical center */
+	            justify-content: space-between;
+	            align-items: center;
 	            padding: 0 20px;
-	            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Bottom shadow */
+	            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 	            z-index: 10;
-	            flex-shrink: 0; /* Prevent height compression */
+	            flex-shrink: 0;
 	        }
 	        .logo {
 	            font-size: 24px;
@@ -57,22 +57,23 @@
 	            transition: background-color 0.3s, transform 0.1s;
 	        }
 	        .fullscreen-btn:hover {
-	            background-color: #c81e45; /* Hover darker */
+	            background-color: #c81e45;
 	        }
 	        .fullscreen-btn:active {
-	            transform: scale(0.95); /* Click shrink effect */
+	            transform: scale(0.95);
 	        }
 	        /* ========== Main Game Area ========== */
 	        main {
-	            flex: 1; /* Take all remaining height */
-	            background-color: #0f3460; /* Game area bg */
+	            height: calc(100vh - 60px); /* 让游戏区占满一屏，下方内容可滚动查看 */
+	            background-color: #0f3460;
 	            position: relative;
+	            flex-shrink: 0;
 	        }
 	        iframe {
 	            width: 100%;
 	            height: 100%;
-	            border: none; /* Remove default border */
-	            display: block; /* Remove bottom whitespace */
+	            border: none;
+	            display: block;
 	        }
 	    </style>
 	</head>
@@ -86,36 +87,38 @@
 	    <main id="gameContainer">
 	        <iframe 
 	            src="https://squarefaceicongenerator.co/" 
-	            allow="fullscreen"  <!-- Allow fullscreen request from iframe -->
+	            allow="fullscreen"
 	            frameborder="0">
 	        </iframe>
 	    </main>
-		<div style="max-width: 800px; margin: 40px auto; padding: 0 20px; color: #ccc; font-size: 16px; line-height: 1.8;">
-        	<h2 style="color: #e94560; font-size: 28px; margin-bottom: 15px;">About Squareface Icon Generator</h2>
-        	<p>
-            	Welcome to the ultimate <strong>Squareface Icon Generator</strong>! Create unique, pixel-perfect, and creative icons directly in your browser. 
-            	Our online icon maker tool is completely free and requires no download. Whether you are a game developer, a graphic designer, or just looking for a fun creative tool, 
-            	Squareface provides endless possibilities for your avatars and icons.
-        	</p>
-        	<h3 style="color: #ffffff; font-size: 22px; margin-top: 20px; margin-bottom: 10px;">How to Use?</h3>
-        	<p>
-            	Simply use the interactive panel above to customize your square face. Change colors, adjust features, and hit generate! 
-            	Once you are happy with your creation, you can easily download it as an image file. Press the "Fullscreen" button for an immersive experience!
-        	</p>
-        	<h3 style="color: #ffffff; font-size: 22px; margin-top: 20px; margin-bottom: 10px;">Why Choose Us?</h3>
-        	<ul style="margin-left: 20px; margin-bottom: 30px;">
-				<li>100% Free online tool</li>
-				<li>Fast loading & Mobile-friendly interface</li>
-				<li>High-quality pixel art output</li>
-				<li>No registration required</li>
-        	</ul>
-    	</div>
-		<footer style="background:#0a0e27;padding:12px 20px;text-align:center;color:#7a859b;font-size:12px;flex-shrink:0;border-top:1px solid #1e2a45;">
-			&copy; 2026 Squareface &nbsp;|&nbsp;
-			<a href="/privacy-policy.html" style="color:#7a859b;text-decoration:none;">Privacy</a> &nbsp;|&nbsp;
-			<a href="/terms-of-service.html" style="color:#7a859b;text-decoration:none;">Terms</a> &nbsp;|&nbsp;
-			<a href="/about.html" style="color:#7a859b;text-decoration:none;">About</a>
-		</footer>
+	    <!-- ===== 下方文字区 (紧凑缩小版) ===== -->
+	    <div style="max-width: 600px; margin: 20px auto; padding: 0 20px; color: #8892b0; font-size: 12px; line-height: 1.5;">
+	        <h2 style="color: #e94560; font-size: 16px; margin-bottom: 8px;">About Squareface Icon Generator</h2>
+	        <p>
+	            Welcome to the ultimate <strong style="color: #fff;">Squareface Icon Generator</strong>! Create unique, pixel-perfect, and creative icons directly in your browser. 
+	            Our online icon maker tool is completely free and requires no download. Whether you are a game developer, a graphic designer, or just looking for a fun creative tool, 
+	            Squareface provides endless possibilities for your avatars and icons.
+	        </p>
+	        <h3 style="color: #ffffff; font-size: 13px; margin-top: 12px; margin-bottom: 4px;">How to Use?</h3>
+	        <p>
+	            Simply use the interactive panel above to customize your square face. Change colors, adjust features, and hit generate! 
+	            Once you are happy with your creation, you can easily download it as an image file. Press the "Fullscreen" button for an immersive experience!
+	        </p>
+	        <h3 style="color: #ffffff; font-size: 13px; margin-top: 12px; margin-bottom: 4px;">Why Choose Us?</h3>
+	        <ul style="margin-left: 16px; margin-bottom: 20px;">
+	            <li>100% Free online tool</li>
+	            <li>Fast loading & Mobile-friendly interface</li>
+	            <li>High-quality pixel art output</li>
+	            <li>No registration required</li>
+	        </ul>
+	    </div>
+	    <!-- ===== 极简页脚 ===== -->
+	    <footer style="background:#0a0e27;padding:12px 20px;text-align:center;color:#7a859b;font-size:12px;flex-shrink:0;border-top:1px solid #1e2a45;">
+	        &copy; 2026 Squareface &nbsp;|&nbsp;
+	        <a href="/privacy-policy.html" style="color:#7a859b;text-decoration:none;">Privacy</a> &nbsp;|&nbsp;
+	        <a href="/terms-of-service.html" style="color:#7a859b;text-decoration:none;">Terms</a> &nbsp;|&nbsp;
+	        <a href="/about.html" style="color:#7a859b;text-decoration:none;">About</a>
+	    </footer>
 	    <!-- JavaScript Logic -->
 	    <script>
 	        // Get button and game container elements
@@ -132,12 +135,12 @@
 	            }
 	        });
 	    </script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8DHB5XR1N"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-Q8DHB5XR1N');
-    </script>
+	    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8DHB5XR1N"></script>
+	    <script>
+	        window.dataLayer = window.dataLayer || [];
+	        function gtag(){dataLayer.push(arguments);}
+	        gtag('js', new Date());
+	        gtag('config', 'G-Q8DHB5XR1N');
+	    </script>
 	</body>
 	</html>
